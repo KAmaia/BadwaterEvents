@@ -67,4 +67,7 @@ public class Channel {
 		return this.name;
 	}
 
+	public boolean isEmpty() {
+		return eventQueue.isEmpty();
+	}
 }

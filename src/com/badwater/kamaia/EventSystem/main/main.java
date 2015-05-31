@@ -6,7 +6,7 @@ import com.badwater.kamaia.EventSystem.EventDispatcher.Dispatcher;
  * Created by Krystal on 2015-05-18.
  */
 public class main {
-	public static void main(String args[]){
+	public static void main(String args[]) throws InterruptedException {
 		//Start the dispatcher in it's own thread, so that it is always running.
 		Dispatcher d = Dispatcher.getInstance();
 

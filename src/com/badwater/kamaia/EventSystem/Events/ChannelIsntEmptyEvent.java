@@ -7,5 +7,6 @@ public class ChannelIsntEmptyEvent extends Event{
 
 	public ChannelIsntEmptyEvent(String channels) {
 		super(channels);
+
 	}
 }

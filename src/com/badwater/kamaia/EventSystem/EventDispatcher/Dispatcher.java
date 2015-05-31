@@ -3,7 +3,6 @@ package com.badwater.kamaia.EventSystem.EventDispatcher;
 import com.badwater.kamaia.EventSystem.Channel.Channel;
 import com.badwater.kamaia.EventSystem.EventRecipient.IEventRecipient;
 import com.badwater.kamaia.EventSystem.Events.Event;
-import com.badwater.kamaia.EventSystem.Events.ShutdownEvent;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,7 +14,7 @@ import java.util.LinkedList;
  * Event Dispatcher class.  Runs on it's own thread.
  * Handles dispatching events through channels.
  */
-public class Dispatcher implements Runnable{
+public class Dispatcher implements Runnable {
 
 	private static Dispatcher instance = new Dispatcher();
 	private HashSet<Channel>                              channels;
@@ -45,10 +44,10 @@ public class Dispatcher implements Runnable{
 
 	/**
 	 * The Event Dispatch Loop.
-	 *
+	 * <p/>
 	 * Iterates over the channels, and if a recipient is listening to a channel on which an event occurs
 	 * calls the recipients onEvent() method.
-	 *
+	 * <p/>
 	 * For some reason this is not working....
 	 */
 	public void run() {
@@ -57,18 +56,20 @@ public class Dispatcher implements Runnable{
 		System.out.println("Dispatcher Started!");
 		while (running) {
 			for (Channel c : channels) {
+				if (!c.isEmpty()) {
 					Event e = c.getNextEvent();
 					for (IEventRecipient ier : EventRecipients.keySet()) {
 						if (EventRecipients.get(ier).contains(c)) {
-							System.out.println("Dispatching: " + e.toString() + " to: " + ier.toString() + "On Channel: " + c.toString());
+							System.out.println("Dispatching: " + e.toString() + " to: " + ier
+								   .toString() + " On Channel: " + c.toString());
 							ier.onEvent(e);
-						}
-						else if(e instanceof ShutdownEvent){
-							System.exit(100);
 						}
 					}
 				}
+
 			}
+		}
+
 
 		System.out.println("Dispatcher Ending!");
 	}

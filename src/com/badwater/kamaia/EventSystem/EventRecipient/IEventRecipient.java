@@ -1,6 +1,6 @@
 package com.badwater.kamaia.EventSystem.EventRecipient;
 
-import com.badwater.kamaia.EventSystem.Events.IEvent;
+import com.badwater.kamaia.EventSystem.Events.Event;
 
 /**
  * Created by Krystal on 2015-05-18.
@@ -8,5 +8,6 @@ import com.badwater.kamaia.EventSystem.Events.IEvent;
  */
 public interface IEventRecipient {
 
-	public <E extends IEvent> void onEvent(E IEvent);
+
+	<e extends Event> void  onEvent(e Event);
 }

@@ -8,12 +8,12 @@ import com.badwater.kamaia.EventSystem.EventDispatcher.Dispatcher;
 public class Event implements IEvent {
 	private String[] channels;
 	public Event(String channels){
-		this.channels = channels.split(".");
+		this.channels = channels.split(",");
 	}
 	public void fire() {
 		for (String channel : channels) {
 			Dispatcher.getInstance().registerEvent(this, channel);
-			System.out.println("Firing: " + this.toString());
+			System.out.println("Firing: " + this.toString() + " to Channel: " + channel);
 		}
 	}
 }

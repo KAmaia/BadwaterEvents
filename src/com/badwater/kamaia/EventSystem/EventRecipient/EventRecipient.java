@@ -1,7 +1,6 @@
 package com.badwater.kamaia.EventSystem.EventRecipient;
 
 import com.badwater.kamaia.EventSystem.EventDispatcher.Dispatcher;
-import com.badwater.kamaia.EventSystem.Events.IEvent;
 
 /**
  *
@@ -15,9 +14,6 @@ public abstract class EventRecipient implements IEventRecipient {
 	protected void register(String channelName) {
 		Dispatcher.getInstance().registerRecipient(this, channelName);
 	}
-	@Override
-	public void onEvent(IEvent E){
 
-	}
 
 }
